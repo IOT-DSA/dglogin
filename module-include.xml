@@ -1,0 +1,6 @@
+<types>
+
+  <type name="DGLogin" 
+        class="com.dglogik.login.BDGLogin"/>
+
+</types>

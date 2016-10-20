@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>Login</title>
+  <script type='text/javascript' src='/login/auth.min.js?<?WEB_VERSION?>'></script> 
+  <script type='text/javascript' src='/login/login.js?<?WEB_VERSION?>'></script> 
+  <script type='text/javascript'>
+    function startup() {
+      if (<?AUTO_LOGIN?>) {
+        document.getElementById("rememberMe").innerHTML = "<input type='checkbox' name='autoLogin' /> Remember Me<br/>"; 
+      }
+    }
+  </script>
+</head>
+<body onload='startup();'>
+<form method='post' action='<?ABS_PATH_BASE?>login'>
+  <table align='center'>
+    <tr><td colspan='2' align='center'><?STATION_NAME?></td></tr>
+    <tr><td colspan='2'><br/></td></tr>
+    <tr><td colspan='2' align='center'><span style='color:#CC0505'><?MESSAGE?></span></td></tr>
+    <tr><td colspan='2'><br/></td></tr>
+    <tr>
+      <td class='expand'>
+        <table style='table-layout:fixed' align='center'>
+          <tr>
+            <td><label>Username: </label></td>
+            <td><input class='textfield' type='text' id='username' size='20' /></td>
+          </tr>
+          <tr>
+            <td><label>Password: </label></td>
+            <td><input class='textfield' type='password' id='password' autocomplete='off' /></td>
+          </tr>
+          <tr><td colspan='2'><br/></td></tr>
+          <tr>
+            <td colspan='2'>
+              <input type='submit' class='button' value='Login' onclick='return doLogin();' />
+              <span id='rememberMe'></span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <input type='hidden' id='scheme' value='<?SCHEME?>'/>
+  <input type='hidden' id='token' name='token' value=''/>
+  <input type='hidden' id='cookiePostfix' value='<?COOKIE_POSTFIX?>'/>
+  <input type='hidden' id='absPathBase' value='<?ABS_PATH_BASE?>'/>
+</form>
+</body>
+</html>

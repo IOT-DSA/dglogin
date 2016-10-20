@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<title>Login</title>
+  <meta name='viewport' content='width=device-width initial-scale=1.0 maximum-scale=1.0 target-densityDpi=medium-dpi' /> 
+  <meta http-equiv='Content-type' content='text/html;charset=UTF-8' /> 
+  <link rel='stylesheet' type='text/css' href='/login/login.css?<?WEB_VERSION?>'/> 
+  <script type='text/javascript' src='/login/auth.min.js?<?WEB_VERSION?>'></script> 
+  <script type='text/javascript' src='/login/login.js?<?WEB_VERSION?>'></script> 
+  <script type='text/javascript'>
+    function startup() {
+      init();
+      if (<?AUTO_LOGIN?>) {
+        document.getElementById("rememberMe").innerHTML = "<input type='checkbox' name='autoLogin' /> Remember Me"; 
+      }
+    }
+  </script>
+</head>
+<body onload='startup();'>
+<div id='contentwrapper'>
+  <script> 
+    if ('ontouchstart' in window) { 
+      document.body.className += ' touch-enabled'; 
+    } 
+  </script>
+  <br/>
+  <table align='center' id='outertable'>
+    <tr>
+      <td>
+        <table align='center'>
+          <tr>
+            <td align='center'>
+              <span style='color:#CC0505'><?MESSAGE?></span>
+            </td>
+          </tr>
+        </table>
+      <td>
+    </tr>
+    <tr>
+      <td>
+        <div class='top'><?STATION_NAME?></div>
+        <br/>
+        <form method='post' action='<?ABS_PATH_BASE?>login'>
+          <table id='formwrapper' align='center'>
+            <tr>
+              <td valign='top' class='shrink'><img id='keys' src='<?CONTENT_PATH?>/assets/keys.png' alt='' /></td>
+              <td class='expand'>
+                <table style='table-layout:fixed' align='center' id='mainForm'>
+                  <tr>
+                    <td width='70px'><label>Username:</label></td>
+                    <td><input class='textfield' type='text' id='username' size='20' /></td>
+                  </tr>
+                  <tr>
+                    <td width='70px'><label>Password:</label></td>
+                    <td><input class='textfield' type='password' id='password' autocomplete='off' /></td>
+                  </tr>
+                  <tr><td colspan='2'><br/></td></tr>
+                  <tr>
+                    <td colspan='2' align='right'>
+                      <span id='rememberMe' style='float:left;'></span>
+                      <input id='submitButton' type='submit' class='button' value='Login' onclick='return doLogin();' />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <input type='hidden' id='scheme' value='<?SCHEME?>'/>
+          <input type='hidden' id='token' name='token' value=''/>
+          <input type='hidden' id='cookiePostfix' value='<?COOKIE_POSTFIX?>'/>
+          <input type='hidden' id='absPathBase' value='<?ABS_PATH_BASE?>'/>
+        </form>
+        <div class='bottom'>&nbsp;</div>  
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

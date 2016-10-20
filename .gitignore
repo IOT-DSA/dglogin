@@ -1,0 +1,13 @@
+**/.classpath
+**/.gradle
+**/.idea
+**/.project
+**/.metadata
+**/.settings
+**/build
+**/eclipseBin
+**/libJar
+**/target
+*.bak
+*.class
+*.java_

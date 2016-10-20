@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width initial-scale=1.0 maximum-scale=1.0 target-densityDpi=medium-dpi' />
+    <meta http-equiv='Content-type' content='text/html;charset=UTF-8' />
+    <link rel='stylesheet' type='text/css' href='<?ABS_PATH_BASE?>login/login.css?<?WEB_VERSION?>'/>
+    <script type='text/javascript' src='<?ABS_PATH_BASE?>login/auth.min.js?<?WEB_VERSION?>'></script> 
+    <script type='text/javascript' src='<?ABS_PATH_BASE?>login/login.js?<?WEB_VERSION?>'></script> 
+  </head>
+  <body onload='init();'>
+    <div id='contentwrapper'>
+      <script type='text/javascript'> 
+        if ('ontouchstart' in window) { 
+         document.body.className += ' touch-enabled'; 
+        } 
+      </script>
+
+      <table align='center' id='outertable'>
+        <tr>
+          <td>
+            <div class='failed'>
+              <b>Password Reset</b><br/> You are required to reset your password before continuing.
+            </div>
+            <br/>
+            <div class='top'><?STATION_NAME?></div>
+            <br/>
+            <form method='post' action='<?ABS_PATH_BASE?>login'>
+              <table id='formwrapper' align='center'>
+                <tr>
+                  <td valign='top' class='shrink'><img id='keys' src='<?CONTENT_PATH?>/assets/keys.png' alt='' /></td>
+                  <td class='expand'>
+                    <table align='center' id='mainForm'>
+                      <tr>
+                        <td class='shrink'><label>Username:</label></td>
+                        <td class='expand'><input onChange='checkPasswords(true);' onKeyUp='checkPasswords(true);' class='textfield' type='text' id='username' size='20' /></td>
+                      </tr>
+                      <tr>
+                        <td class='shrink'><label>Password:</label></td>
+                        <td class='expand'><input onChange='checkPasswords(true);' onKeyUp='checkPasswords(true);' class='textfield' type='password' id='password' /></td>
+                      </tr>
+                      <tr>
+                        <td colspan='2'><label class='strongPasswordMsg'>The default password requirements are at least ten characters and must contain:<ul><li>one upper case letter<li>one lower case letter<li>one number or symbol</ul>Those requirements can be changed and if so, you will need to see your administrator for the new criteria.</label></td>
+                      </tr>
+                      <tr>
+                        <td class='shrink'><label>New<br/>Password:</label></td>
+                        <td class='expand'><input onChange='checkPasswords(true);' onKeyUp='checkPasswords(true);' class='textfield passwordValidation' type='password' id='password1' size='20' /></td>
+                      </tr>
+                      <tr>
+                        <td class='shrink'><label>Retype<br/>Password:</label></td>
+                        <td class='expand'><input onChange='checkPasswords(true);' onKeyUp='checkPasswords(true);' class='textfield passwordValidation' type='password' id='password2' /></td>
+                      </tr>
+                      <tr>
+                        <td colspan='2'><br/></td>
+                      </tr>
+                      <tr>
+                        <td colspan='2' align='right'>
+                          <input id='submitButton' type='submit' class='button' value='Login' onclick='return login.doResetPassword();' />
+                        </td>
+                      </tr>
+                    </table>
+                    <input type='hidden' id='state' value='3' />
+                    <input type='hidden' id='resetToken' name='resetToken' value=''/>
+                    <script type='text/javascript'>
+                      checkPasswords(true);
+                    </script>
+                  </td>
+                </tr>
+              </table>
+              <input type='hidden' id='scheme' value='<?SCHEME?>'/>
+              <input type='hidden' id='token' name='token' value=''/>
+              <input type='hidden' id='cookiePostfix' value='<?COOKIE_POSTFIX?>'/>
+              <input type='hidden' id='absPathBase' value='<?ABS_PATH_BASE?>'/>
+            </form>
+            <div class='bottom'>&nbsp;</div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </body>
+</html>
+
